@@ -1,0 +1,372 @@
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+usage: rasa [-h] [--version]
+            {init,run,shell,train,interactive,telemetry,test,visualize,data,export,x,evaluate}
+            ...
+rasa: error: unrecognized arguments: --enaAble-api
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/shared/utils/validation.py:134: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  import pkg_resources
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google.logging')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('ruamel')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic_cors/extension.py:39: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  SANIC_VERSION = LooseVersion(sanic_version)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/lite/python/util.py:52: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+  from jax import xla_computation as _xla_computation
+2024-07-29 22:05:13 INFO     root  - Starting Rasa server on http://0.0.0.0:5005
+2024-07-29 22:05:14 INFO     rasa.core.processor  - Loading model models/20240727-223811-brilliant-branch.tar.gz...
+[93m/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/shared/utils/io.py:99: UserWarning: Training data file /tmp/tmp5wjcngy9/domain_provider/domain.yml has a lower format version than your Rasa Open Source installation: 2.0 < 3.1. Rasa Open Source will read the file as a version 3.1 file. Please update your version key to 3.1. See https://rasa.com/docs/rasa/training-data-format.
+[0m2024-07-29 22:05:49 WARNING  rasa.shared.utils.common  - The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+[2024-07-29 22:05:51 +0200] [1617369] [ERROR] Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/app.py", line 1204, in run
+    serve_single(server_settings)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/server/runners.py", line 206, in serve_single
+    serve(**server_settings)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/server/runners.py", line 130, in serve
+    loop.run_until_complete(app._server_event("init", "before"))
+  File "uvloop/loop.pyx", line 1511, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1504, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1377, in uvloop.loop.Loop.run_forever
+  File "uvloop/loop.pyx", line 555, in uvloop.loop.Loop._run
+  File "uvloop/loop.pyx", line 474, in uvloop.loop.Loop._on_idle
+  File "uvloop/cbhandles.pyx", line 83, in uvloop.loop.Handle._run
+  File "uvloop/cbhandles.pyx", line 61, in uvloop.loop.Handle._run
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/app.py", line 2000, in _server_event
+    await self.dispatch(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/signals.py", line 191, in dispatch
+    return await dispatch
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/signals.py", line 161, in _dispatch
+    retval = await maybe_coroutine
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/app.py", line 1524, in _listener
+    await maybe_coro
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/run.py", line 290, in load_agent_on_start
+    app.ctx.agent = await agent.load_agent(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/agent.py", line 254, in load_agent
+    agent.load_model(model_path)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/agent.py", line 352, in load_model
+    self.processor = MessageProcessor(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/processor.py", line 105, in __init__
+    self.model_filename, self.model_metadata, self.graph_runner = self._load_model(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/processor.py", line 142, in _load_model
+    metadata, runner = loader.load_predict_graph_runner(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/loader.py", line 29, in load_predict_graph_runner
+    runner = graph_runner_class.create(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 51, in create
+    return cls(graph_schema, model_storage, execution_context, hooks)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 37, in __init__
+    self._instantiated_nodes: Dict[Text, GraphNode] = self._instantiate_nodes(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 60, in _instantiate_nodes
+    return {
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 61, in <dictcomp>
+    node_name: GraphNode.from_schema_node(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/graph.py", line 566, in from_schema_node
+    return cls(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/graph.py", line 392, in __init__
+    self._load_component()
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/graph.py", line 403, in _load_component
+    self._component: GraphComponent = constructor(  # type: ignore[no-redef]
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 1052, in load
+    return cls._load(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 1096, in _load
+    model = cls._load_tf_model(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 1145, in _load_tf_model
+    model = cls.model_class().load(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/utils/tensorflow/models.py", line 445, in load
+    model.fit(data_generator, verbose=False)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 942, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 763, in _initialize
+    self._variable_creation_fn    # pylint: disable=protected-access
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 171, in _get_concrete_function_internal_garbage_collected
+    concrete_function, _ = self._maybe_define_concrete_function(args, kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 166, in _maybe_define_concrete_function
+    return self._maybe_define_function(args, kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 396, in _maybe_define_function
+    concrete_function = self._create_concrete_function(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 300, in _create_concrete_function
+    func_graph_module.func_graph_from_py_func(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 1214, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 667, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 1189, in autograph_handler
+    return autograph.converted_call(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 439, in converted_call
+    result = converted_f(*effective_args, **kwargs)
+  File "/tmp/__autograph_generated_filek1_mwewq.py", line 15, in tf__train_function
+    retval_ = ag__.converted_call(ag__.ld(step_function), (ag__.ld(self), ag__.ld(iterator)), None, fscope)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 377, in converted_call
+    return _call_unconverted(f, args, kwargs, options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 459, in _call_unconverted
+    return f(*args)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/training.py", line 1268, in step_function
+    outputs = model.distribute_strategy.run(run_step, args=(data,))
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py", line 1316, in run
+    return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py", line 2895, in call_for_each_replica
+    return self._call_for_each_replica(fn, args, kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py", line 3696, in _call_for_each_replica
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 689, in wrapper
+    return converted_call(f, args, kwargs, options=options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 377, in converted_call
+    return _call_unconverted(f, args, kwargs, options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 458, in _call_unconverted
+    return f(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/training.py", line 1249, in run_step
+    outputs = model.train_step(data)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/utils/tensorflow/models.py", line 161, in train_step
+    prediction_loss = self.batch_loss(batch_in)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 2001, in batch_loss
+    loss, acc = self._tf_layers[f"loss.{LABEL}"](
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/base_layer.py", line 1145, in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 96, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 689, in wrapper
+    return converted_call(f, args, kwargs, options=options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 439, in converted_call
+    result = converted_f(*effective_args, **kwargs)
+  File "/tmp/__autograph_generated_fileiji3y1ip.py", line 29, in tf__call
+    (sim_pos, sim_neg_il, sim_neg_ll, sim_neg_ii, sim_neg_li) = ag__.converted_call(ag__.ld(self)._train_sim, (ag__.ld(pos_inputs_embed), ag__.ld(pos_labels_embed), ag__.ld(neg_inputs_embed), ag__.ld(neg_labels_embed), ag__.ld(inputs_bad_negs), ag__.ld(labels_bad_negs), ag__.ld(mask)), None, fscope)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 441, in converted_call
+    result = converted_f(*effective_args)
+  File "/tmp/__autograph_generated_filekoy5m6v8.py", line 14, in tf___train_sim
+    sim_neg_ll = ag__.converted_call(ag__.ld(self).sim, (ag__.ld(pos_labels_embed), ag__.ld(neg_labels_embed), ag__.ld(mask)), None, fscope) + ag__.ld(neg_inf) * ag__.ld(labels_bad_negs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 441, in converted_call
+    result = converted_f(*effective_args)
+  File "/tmp/__autograph_generated_filezu6kojsl.py", line 45, in tf__sim
+    sim = ag__.converted_call(ag__.ld(tf).reduce_sum, (ag__.ld(a) * ag__.ld(b),), dict(axis=-1), fscope)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 1459, in binary_op_wrapper
+    return func(x, y, name=name)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 1819, in _mul_dispatch
+    return multiply(x, y, name=name)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/dispatch.py", line 1176, in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 530, in multiply
+    return gen_math_ops.mul(x, y, name)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/gen_math_ops.py", line 6589, in mul
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/op_def_library.py", line 775, in _apply_op_helper
+    with g.as_default(), ops.name_scope(name) as scope:
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 483, in as_default
+    def inner_cm():
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/tf_contextlib.py", line 32, in contextmanager
+    return tf_decorator.make_decorator(target, context_manager, 'contextmanager')
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/tf_decorator.py", line 141, in make_decorator
+    if hasattr(target, '__name__'):
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/watzmann/miniconda3/envs/exp/bin/rasa", line 8, in <module>
+    sys.exit(main())
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/__main__.py", line 133, in main
+    cmdline_arguments.func(cmdline_arguments)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/cli/run.py", line 93, in run
+    rasa.run(**vars(args))
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/api.py", line 56, in run
+    rasa.core.run.serve_application(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/run.py", line 268, in serve_application
+    app.run(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/app.py", line 1204, in run
+    serve_single(server_settings)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/server/runners.py", line 206, in serve_single
+    serve(**server_settings)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/server/runners.py", line 130, in serve
+    loop.run_until_complete(app._server_event("init", "before"))
+  File "uvloop/loop.pyx", line 1511, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1504, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1377, in uvloop.loop.Loop.run_forever
+  File "uvloop/loop.pyx", line 555, in uvloop.loop.Loop._run
+  File "uvloop/loop.pyx", line 474, in uvloop.loop.Loop._on_idle
+  File "uvloop/cbhandles.pyx", line 83, in uvloop.loop.Handle._run
+  File "uvloop/cbhandles.pyx", line 61, in uvloop.loop.Handle._run
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/app.py", line 2000, in _server_event
+    await self.dispatch(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/signals.py", line 191, in dispatch
+    return await dispatch
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/signals.py", line 161, in _dispatch
+    retval = await maybe_coroutine
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic/app.py", line 1524, in _listener
+    await maybe_coro
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/run.py", line 290, in load_agent_on_start
+    app.ctx.agent = await agent.load_agent(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/agent.py", line 254, in load_agent
+    agent.load_model(model_path)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/agent.py", line 352, in load_model
+    self.processor = MessageProcessor(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/processor.py", line 105, in __init__
+    self.model_filename, self.model_metadata, self.graph_runner = self._load_model(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/processor.py", line 142, in _load_model
+    metadata, runner = loader.load_predict_graph_runner(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/loader.py", line 29, in load_predict_graph_runner
+    runner = graph_runner_class.create(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 51, in create
+    return cls(graph_schema, model_storage, execution_context, hooks)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 37, in __init__
+    self._instantiated_nodes: Dict[Text, GraphNode] = self._instantiate_nodes(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 60, in _instantiate_nodes
+    return {
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/runner/dask.py", line 61, in <dictcomp>
+    node_name: GraphNode.from_schema_node(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/graph.py", line 566, in from_schema_node
+    return cls(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/graph.py", line 392, in __init__
+    self._load_component()
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/engine/graph.py", line 403, in _load_component
+    self._component: GraphComponent = constructor(  # type: ignore[no-redef]
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 1052, in load
+    return cls._load(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 1096, in _load
+    model = cls._load_tf_model(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 1145, in _load_tf_model
+    model = cls.model_class().load(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/utils/tensorflow/models.py", line 445, in load
+    model.fit(data_generator, verbose=False)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 942, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 763, in _initialize
+    self._variable_creation_fn    # pylint: disable=protected-access
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 171, in _get_concrete_function_internal_garbage_collected
+    concrete_function, _ = self._maybe_define_concrete_function(args, kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 166, in _maybe_define_concrete_function
+    return self._maybe_define_function(args, kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 396, in _maybe_define_function
+    concrete_function = self._create_concrete_function(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 300, in _create_concrete_function
+    func_graph_module.func_graph_from_py_func(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 1214, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 667, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 1189, in autograph_handler
+    return autograph.converted_call(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 439, in converted_call
+    result = converted_f(*effective_args, **kwargs)
+  File "/tmp/__autograph_generated_filek1_mwewq.py", line 15, in tf__train_function
+    retval_ = ag__.converted_call(ag__.ld(step_function), (ag__.ld(self), ag__.ld(iterator)), None, fscope)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 377, in converted_call
+    return _call_unconverted(f, args, kwargs, options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 459, in _call_unconverted
+    return f(*args)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/training.py", line 1268, in step_function
+    outputs = model.distribute_strategy.run(run_step, args=(data,))
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py", line 1316, in run
+    return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py", line 2895, in call_for_each_replica
+    return self._call_for_each_replica(fn, args, kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py", line 3696, in _call_for_each_replica
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 689, in wrapper
+    return converted_call(f, args, kwargs, options=options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 377, in converted_call
+    return _call_unconverted(f, args, kwargs, options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 458, in _call_unconverted
+    return f(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/training.py", line 1249, in run_step
+    outputs = model.train_step(data)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/utils/tensorflow/models.py", line 161, in train_step
+    prediction_loss = self.batch_loss(batch_in)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/policies/ted_policy.py", line 2001, in batch_loss
+    loss, acc = self._tf_layers[f"loss.{LABEL}"](
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/engine/base_layer.py", line 1145, in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 96, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 689, in wrapper
+    return converted_call(f, args, kwargs, options=options)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 439, in converted_call
+    result = converted_f(*effective_args, **kwargs)
+  File "/tmp/__autograph_generated_fileiji3y1ip.py", line 29, in tf__call
+    (sim_pos, sim_neg_il, sim_neg_ll, sim_neg_ii, sim_neg_li) = ag__.converted_call(ag__.ld(self)._train_sim, (ag__.ld(pos_inputs_embed), ag__.ld(pos_labels_embed), ag__.ld(neg_inputs_embed), ag__.ld(neg_labels_embed), ag__.ld(inputs_bad_negs), ag__.ld(labels_bad_negs), ag__.ld(mask)), None, fscope)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 441, in converted_call
+    result = converted_f(*effective_args)
+  File "/tmp/__autograph_generated_filekoy5m6v8.py", line 14, in tf___train_sim
+    sim_neg_ll = ag__.converted_call(ag__.ld(self).sim, (ag__.ld(pos_labels_embed), ag__.ld(neg_labels_embed), ag__.ld(mask)), None, fscope) + ag__.ld(neg_inf) * ag__.ld(labels_bad_negs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 441, in converted_call
+    result = converted_f(*effective_args)
+  File "/tmp/__autograph_generated_filezu6kojsl.py", line 45, in tf__sim
+    sim = ag__.converted_call(ag__.ld(tf).reduce_sum, (ag__.ld(a) * ag__.ld(b),), dict(axis=-1), fscope)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 1459, in binary_op_wrapper
+    return func(x, y, name=name)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 1819, in _mul_dispatch
+    return multiply(x, y, name=name)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/dispatch.py", line 1176, in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 530, in multiply
+    return gen_math_ops.mul(x, y, name)
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/ops/gen_math_ops.py", line 6589, in mul
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/op_def_library.py", line 775, in _apply_op_helper
+    with g.as_default(), ops.name_scope(name) as scope:
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 483, in as_default
+    def inner_cm():
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/tf_contextlib.py", line 32, in contextmanager
+    return tf_decorator.make_decorator(target, context_manager, 'contextmanager')
+  File "/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/python/util/tf_decorator.py", line 141, in make_decorator
+    if hasattr(target, '__name__'):
+KeyboardInterrupt
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/core/tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/shared/utils/validation.py:134: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  import pkg_resources
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google.logging')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/pkg_resources/__init__.py:3121: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('ruamel')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/sanic_cors/extension.py:39: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  SANIC_VERSION = LooseVersion(sanic_version)
+/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/tensorflow/lite/python/util.py:52: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+  from jax import xla_computation as _xla_computation
+2024-07-29 22:08:38 INFO     root  - Starting Rasa server on http://0.0.0.0:5005
+2024-07-29 22:08:39 INFO     rasa.core.processor  - Loading model models/20240727-223811-brilliant-branch.tar.gz...
+[93m/home/watzmann/miniconda3/envs/exp/lib/python3.9/site-packages/rasa/shared/utils/io.py:99: UserWarning: Training data file /tmp/tmpmrnqgz7m/domain_provider/domain.yml has a lower format version than your Rasa Open Source installation: 2.0 < 3.1. Rasa Open Source will read the file as a version 3.1 file. Please update your version key to 3.1. See https://rasa.com/docs/rasa/training-data-format.
+[0m2024-07-29 22:09:14 WARNING  rasa.shared.utils.common  - The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2024-07-29 22:09:27 INFO     root  - Rasa server is up and running.

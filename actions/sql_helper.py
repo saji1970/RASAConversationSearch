@@ -8,9 +8,9 @@ from llama_index.core import VectorStoreIndex
 import logging
 from llama_index.core.output_parsers import LangchainOutputParser
 from langchain_core.output_parsers import JsonOutputParser
-from dotenv import load_env
+from dotenv import load_dotenv
 
-load_env()
+load_dotenv()
 
 # PostgreSQL URL
 os.environ["DATABASE_URL"] = "postgresql://postgres:password@localhost:5432"

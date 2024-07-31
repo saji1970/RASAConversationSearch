@@ -13,13 +13,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # PostgreSQL URL
-os.environ["DATABASE_URL"] = "postgresql://postgres:password@localhost:5432"
 postgres_url = os.environ.get("DATABASE_URL")
-db_name = "rasa_prod"
 
 output_parser = LangchainOutputParser(JsonOutputParser())
 
-engine = create_engine(f"{postgres_url}/{db_name}")
+engine = create_engine(postgres_url)
 
 # Choose LLM and configure ServiceContext
 llm = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model="gpt-4o-mini", output_parser=output_parser)

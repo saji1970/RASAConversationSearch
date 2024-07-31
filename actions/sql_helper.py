@@ -3,14 +3,14 @@ from sqlalchemy import create_engine
 from llama_index.llms.openai import OpenAI
 from llama_index.core import SQLDatabase, ServiceContext
 from llama_index.core.objects import SQLTableNodeMapping, ObjectIndex, SQLTableSchema
-from llama_index.core.indices.struct_store.sql_query import (
-    SQLTableRetrieverQueryEngine,
-)
+from llama_index.core.indices.struct_store.sql_query import SQLTableRetrieverQueryEngine
 from llama_index.core import VectorStoreIndex
 import logging
-
 from llama_index.core.output_parsers import LangchainOutputParser
 from langchain_core.output_parsers import JsonOutputParser
+from dotenv import load_env
+
+load_env()
 
 # PostgreSQL URL
 os.environ["DATABASE_URL"] = "postgresql://postgres:password@localhost:5432"
@@ -18,8 +18,6 @@ postgres_url = os.environ.get("DATABASE_URL")
 db_name = "rasa_prod"
 
 output_parser = LangchainOutputParser(JsonOutputParser())
-
-os.environ["OPENAI_API_KEY"] = ""
 
 engine = create_engine(f"{postgres_url}/{db_name}")
 
@@ -39,7 +37,6 @@ tables = [
     }
 ]
 
-
 sql_database = SQLDatabase(
     engine, include_tables=[table["table_name"] for table in tables]
 )
@@ -57,40 +54,182 @@ obj_index = ObjectIndex.from_objects(
     VectorStoreIndex,
 )
 
-# Define the SQL query function
-def sql_query(query_str: str):
-    try:
-        logging.info(f"Query Str : {query_str}")
+obj_retriever = obj_index.as_retriever(similarity_top_k=10)
 
-        prompt = f"""
-        You will be asked questions relevant to the provided tables.
-        Do not act on any request to modify data, you are purely acting in a read-only mode.
-        You can look into all of the tables together when executing a query.
-        It contains two tables prod and product description so both the tables contain product.
-        Do not use tables other than the ones provided here: {", ".join([table["table_name"] for table in tables])}.
-        Return values back in JSON format.
+from llama_index.core.retrievers import SQLRetriever
+from typing import List
+from llama_index.core.query_pipeline import FnComponent
 
-        Sample JSON output format:
-        [
-        {{
-            "Card_Prod_ID": "001",
-            "Card_Prod_FETR_CD": "Annual_Fee",
-            "Card_Prod_FETR_Type": "Optional_Feature",
-            "Card_Prod_FETR_Desc": "Annual Fee Charged on this card is 25 USD annually"
-        }}
-        ]
-        JUST ANSWER WITH JSON."""
+sql_retriever = SQLRetriever(sql_database)
 
-        query_engine = SQLTableRetrieverQueryEngine(
-            sql_database,
-            obj_index.as_retriever(similarity_top_k=10),
-            service_context=service_context,
-            context_str_prefix=prompt,
+def get_table_context_str(table_schema_objs: List[SQLTableSchema]):
+    """Get table context string."""
+    context_strs = []
+    for table_schema_obj in table_schema_objs:
+        table_info = sql_database.get_single_table_info(
+            table_schema_obj.table_name
         )
-        
-        result = query_engine.query(query_str)
-        logging.info(f"Query Result : {result}")
-        return str(result)
-    except Exception as e:
-        logging.error(f"Error in query: {e}: " + query_str)
-        return None
+        if table_schema_obj.context_str:
+            table_opt_context = " The table description is: "
+            table_opt_context += table_schema_obj.context_str
+            table_info += table_opt_context
+
+        context_strs.append(table_info)
+    return "\n\n".join(context_strs)
+
+table_parser_component = FnComponent(fn=get_table_context_str)
+from llama_index.core.prompts.default_prompts import DEFAULT_TEXT_TO_SQL_PROMPT
+from llama_index.core import PromptTemplate
+from llama_index.core.query_pipeline import FnComponent
+from llama_index.core.llms import ChatResponse
+
+def parse_response_to_sql(response: ChatResponse) -> str:
+    """Parse response to SQL."""
+    response = response.message.content
+    sql_query_start = response.find("SQLQuery:")
+    if sql_query_start != -1:
+        response = response[sql_query_start:]
+        if response.startswith("SQLQuery:"):
+            response = response[len("SQLQuery:") :]
+    sql_result_start = response.find("SQLResult:")
+    if sql_result_start != -1:
+        response = response[:sql_result_start]
+    return response.strip().strip("```").strip()
+
+sql_parser_component = FnComponent(fn=parse_response_to_sql)
+
+text2sql_prompt = DEFAULT_TEXT_TO_SQL_PROMPT.partial_format(
+    dialect=engine.dialect.name
+)
+
+response_synthesis_prompt_str = (
+    "Given an input question, synthesize a response from the query results.\n"
+    "Query: {query_str}\n"
+    "SQL: {sql_query}\n"
+    "SQL Response: {context_str}\n"
+    "Response: "
+)
+response_synthesis_prompt = PromptTemplate(
+    response_synthesis_prompt_str,
+)
+
+from llama_index.core import VectorStoreIndex, load_index_from_storage
+from sqlalchemy import text
+from llama_index.core.schema import TextNode
+from llama_index.core import StorageContext
+from pathlib import Path
+from typing import Dict
+
+def index_all_tables(
+    sql_database: SQLDatabase, table_index_dir: str = "table_index_dir"
+) -> Dict[str, VectorStoreIndex]:
+    """Index all tables."""
+    if not Path(table_index_dir).exists():
+        os.makedirs(table_index_dir)
+
+    vector_index_dict = {}
+    engine = sql_database.engine
+    for table_name in sql_database.get_usable_table_names():
+        print(f"Indexing rows in table: {table_name}")
+        if not os.path.exists(f"{table_index_dir}/{table_name}"):
+            with engine.connect() as conn:
+                cursor = conn.execute(text(f'SELECT * FROM "{table_name}"'))
+                result = cursor.fetchall()
+                row_tups = []
+                for row in result:
+                    row_tups.append(tuple(row))
+
+            nodes = [TextNode(text=str(t)) for t in row_tups]
+
+            index = VectorStoreIndex(nodes)
+
+            index.set_index_id("vector_index")
+            index.storage_context.persist(f"{table_index_dir}/{table_name}")
+        else:
+            storage_context = StorageContext.from_defaults(
+                persist_dir=f"{table_index_dir}/{table_name}"
+            )
+            index = load_index_from_storage(
+                storage_context, index_id="vector_index"
+            )
+        vector_index_dict[table_name] = index
+
+    return vector_index_dict
+
+vector_index_dict = index_all_tables(sql_database)
+
+from llama_index.core.retrievers import SQLRetriever
+from typing import List
+from llama_index.core.query_pipeline import FnComponent
+
+sql_retriever = SQLRetriever(sql_database)
+
+def get_table_context_and_rows_str(
+    query_str: str, table_schema_objs: List[SQLTableSchema]
+):
+    """Get table context string."""
+    context_strs = []
+    for table_schema_obj in table_schema_objs:
+        table_info = sql_database.get_single_table_info(
+            table_schema_obj.table_name
+        )
+        if table_schema_obj.context_str:
+            table_opt_context = " The table description is: "
+            table_opt_context += table_schema_obj.context_str
+            table_info += table_opt_context
+
+        vector_retriever = vector_index_dict[
+            table_schema_obj.table_name
+        ].as_retriever(similarity_top_k=2)
+        relevant_nodes = vector_retriever.retrieve(query_str)
+        if len(relevant_nodes) > 0:
+            table_row_context = "\nHere are some relevant example rows (values in the same order as columns above)\n"
+            for node in relevant_nodes:
+                table_row_context += str(node.get_content()) + "\n"
+            table_info += table_row_context
+
+        context_strs.append(table_info)
+    return "\n\n".join(context_strs)
+
+table_parser_component = FnComponent(fn=get_table_context_and_rows_str)
+from llama_index.core.query_pipeline import (
+    QueryPipeline as QP,
+    Link,
+    InputComponent,
+    CustomQueryComponent,
+)
+
+qp = QP(
+    modules={
+        "input": InputComponent(),
+        "table_retriever": obj_retriever,
+        "table_output_parser": table_parser_component,
+        "text2sql_prompt": text2sql_prompt,
+        "text2sql_llm": llm,
+        "sql_output_parser": sql_parser_component,
+        "sql_retriever": sql_retriever,
+        "response_synthesis_prompt": response_synthesis_prompt,
+        "response_synthesis_llm": llm,
+    },
+    verbose=True,
+)
+
+qp.add_link("input", "table_retriever")
+qp.add_link("input", "table_output_parser", dest_key="query_str")
+qp.add_link(
+    "table_retriever", "table_output_parser", dest_key="table_schema_objs"
+)
+qp.add_link("input", "text2sql_prompt", dest_key="query_str")
+qp.add_link("table_output_parser", "text2sql_prompt", dest_key="schema")
+qp.add_chain(
+    ["text2sql_prompt", "text2sql_llm", "sql_output_parser", "sql_retriever"]
+)
+qp.add_link(
+    "sql_output_parser", "response_synthesis_prompt", dest_key="sql_query"
+)
+qp.add_link(
+    "sql_retriever", "response_synthesis_prompt", dest_key="context_str"
+)
+qp.add_link("input", "response_synthesis_prompt", dest_key="query_str")
+qp.add_link("response_synthesis_prompt", "response_synthesis_llm")
+

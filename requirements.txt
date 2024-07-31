@@ -1,4 +1,8 @@
-typer==0.4.0
-jina==2.6.4
 clumper==0.2.15
-httpx==0.22.0
+jina==3.27.2
+langchain_core==0.2.25
+llama_index==0.10.58
+python-dotenv==1.0.1
+rasa_sdk==3.9.0
+SQLAlchemy==1.4.50
+typer==0.12.3

@@ -22,6 +22,7 @@
       ```env
       DATABASE_URL=<postgresql://postgres:password@localhost:5432/rasa_prod>
       OPENAI_API_KEY=<YOUR KEY>
+      MODEL_TYPE="ollama" or "openai"
       ```
 
 5. **Run the Rasa actions server**:

@@ -9,6 +9,10 @@ import logging
 from llama_index.core.output_parsers import LangchainOutputParser
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
+from llama_index.llms.ollama import Ollama
+
+from llama_index.core import Settings
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 load_dotenv()
 
@@ -20,7 +24,15 @@ output_parser = LangchainOutputParser(JsonOutputParser())
 engine = create_engine(postgres_url)
 
 # Choose LLM and configure ServiceContext
-llm = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model="gpt-4o-mini", output_parser=output_parser)
+if os.environ.get("MODEL_TYPE") == "ollama":
+    llm = Ollama(model="llama2:7b-chat", request_timeout=120.0)
+
+    Settings.embed_model = HuggingFaceEmbedding(
+        model_name="BAAI/bge-small-en-v1.5"
+    )
+else:
+    llm = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model="gpt-4o-mini", output_parser=output_parser)
+
 service_context = ServiceContext.from_defaults(llm=llm)
 
 # Define the tables and create SQLDatabase object

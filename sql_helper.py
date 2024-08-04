@@ -10,10 +10,9 @@ from llama_index.core.output_parsers import LangchainOutputParser
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
 from llama_index.llms.ollama import Ollama
-
+from llama_index.embeddings.langchain import LangchainEmbedding
+from langchain_huggingface import HuggingFaceEmbeddings
 from llama_index.core import Settings
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-
 load_dotenv()
 
 # PostgreSQL URL
@@ -25,15 +24,19 @@ engine = create_engine(postgres_url)
 
 # Choose LLM and configure ServiceContext
 if os.environ.get("MODEL_TYPE") == "ollama":
-    llm = Ollama(model="llama2:7b-chat", request_timeout=120.0)
+    llm = Ollama(model=os.environ.get("MODEL_NAME"), request_timeout=120.0)
 
-    Settings.embed_model = HuggingFaceEmbedding(
-        model_name="BAAI/bge-small-en-v1.5"
-    )
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+    embed_model = LangchainEmbedding(embeddings)
+
+    Settings.embed_model = embed_model
+
+    service_context = ServiceContext.from_defaults(llm=llm, embed_model="local:sentence-transformers/all-MiniLM-L6-v2")
 else:
     llm = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model="gpt-4o-mini", output_parser=output_parser)
 
-service_context = ServiceContext.from_defaults(llm=llm)
+    service_context = ServiceContext.from_defaults(llm=llm)
 
 # Define the tables and create SQLDatabase object
 tables = [
@@ -243,3 +246,33 @@ qp.add_link(
 qp.add_link("input", "response_synthesis_prompt", dest_key="query_str")
 qp.add_link("response_synthesis_prompt", "response_synthesis_llm")
 
+# response = qp.run(
+#     query="show all cash back options card"
+# )
+# print(str(response))
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+# Initialize FastAPI app
+app = FastAPI()
+
+# Define request model
+class QueryRequest(BaseModel):
+    query: str
+
+# Define POST endpoint
+@app.post("/query")
+async def execute_query(request: QueryRequest):
+    try:
+        # Execute the query using query_engine
+        response = qp.run(
+            query=request.query
+        )
+        return {"result": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

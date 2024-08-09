@@ -13,8 +13,16 @@ from llama_index.llms.ollama import Ollama
 
 from llama_index.core import Settings
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.llms.azure_openai import AzureOpenAI
+from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
 
 load_dotenv()
+
+# For azure
+api_key = ""
+azure_endpoint = ""
+api_version = ""
+deployment_name = ""
 
 # PostgreSQL URL
 postgres_url = os.environ.get("DATABASE_URL")
@@ -30,6 +38,24 @@ if os.environ.get("MODEL_TYPE") == "ollama":
     Settings.embed_model = HuggingFaceEmbedding(
         model_name="BAAI/bge-small-en-v1.5"
     )
+elif os.environ.get("MODEL_TYPE") == "azure":
+    llm = AzureOpenAI(
+    model="gpt-35-turbo-16k",
+    deployment_name=deployment_name,
+    api_key=api_key,
+    azure_endpoint=azure_endpoint,
+    api_version=api_version,
+    )
+    
+    embed_model = AzureOpenAIEmbedding(
+    model="text-embedding-ada-002",
+    deployment_name=deployment_name,
+    api_key=api_key,
+    azure_endpoint=azure_endpoint,
+    api_version=api_version,
+    )
+    Settings.llm = llm
+    Settings.embed_model = embed_model  
 else:
     llm = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model="gpt-4o-mini", output_parser=output_parser)
 
